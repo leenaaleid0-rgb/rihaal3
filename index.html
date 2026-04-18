@@ -73,12 +73,6 @@
         
         input, select { width: 95%; padding: 10px; margin: 5px 0; border: 1px solid #D2B48C; border-radius: 4px; font-size: 13px; font-family: 'Times New Roman', Times, serif; }
 
-        /* --- BROWN LINKS --- */
-        a { color: #5D2E0A; text-decoration: underline; }
-
-        /* --- AUTH UNDERLINE --- */
-        .auth-header { display: inline-block; color: #5D2E0A; font-size: 18px; font-weight: bold; border-bottom: 2px solid #D2B48C; padding-bottom: 5px; margin-bottom: 20px; }
-        
         /* --- CLASS SELECTION --- */
         .class-box { border: 2px solid #D2B48C; padding: 12px; margin-top: 10px; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff; }
         .economy-silver { border-color: #C0C0C0; background: linear-gradient(145deg, #ffffff, #f0f0f0); color: #444; }
@@ -93,11 +87,10 @@
         .stat-card label { font-size: 10px; text-transform: uppercase; opacity: 0.8; letter-spacing: 0.5px; }
         .health-indicator { display: flex; align-items: center; background: #f0fff0; border: 1px solid #90ee90; padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 12px; color: #2e8b57; }
         .dot { height: 8px; width: 8px; background-color: #2e8b57; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 2s infinite; }
-        .activity-item { font-size: 11px; padding: 8px 0; border-bottom: 1px solid #eee; color: #555; }
-        .activity-item b { color: #5D2E0A; }
-        .admin-status-group { display: flex; gap: 5px; margin-top: 10px; }
-        .st-btn { flex: 1; font-size: 10px; padding: 6px; border-radius: 4px; border: 1px solid #5D2E0A; cursor: pointer; background: #fff; color: #5D2E0A; font-weight: bold; }
+        .admin-status-group { display: flex; gap: 4px; margin-top: 10px; flex-wrap: wrap; }
+        .st-btn { flex: 1; min-width: 60px; font-size: 9px; padding: 6px; border-radius: 4px; border: 1px solid #5D2E0A; cursor: pointer; background: #fff; color: #5D2E0A; font-weight: bold; }
         .st-btn.active-now { background: #5D2E0A; color: #F5DEB3; }
+        .st-btn.del-btn { border-color: #8b0000; color: #8b0000; }
     </style>
 </head>
 <body>
@@ -116,131 +109,88 @@
     </div>
 
     <div class="screen">
-        <div class="status-bar"><span>12:00</span><span>ðŸ“¶ ðŸ”‹</span></div>
+        <div class="status-bar"><span>12:00</span><span>📶 🔋</span></div>
 
         <div class="app-view">
             <div id="page-start" class="page active">
-                <header><h1>RIHAAL | Ø±Ø­Ø§Ù„</h1><p>Integrated Railway Reservation & Operations System</p></header>
+                <header><h1>RIHAAL | رحال</h1><p>Integrated Railway Reservation & Operations System</p></header>
                 <div class="container" style="justify-content:center; align-items:center; text-align:center;">
                     <img src="logo.jpeg" style="width: 150px; margin-bottom: 15px;">
-                    <p style="font-style: italic; color: #5D2E0A; font-size: 13px; margin-bottom: 30px;">From sand to city â€” your journey begins with Rihaal.</p>
+                    <p style="font-style: italic; color: #5D2E0A; font-size: 13px; margin-bottom: 30px;">From sand to city — your journey begins with Rihaal.</p>
                     <button class="btn" style="border-radius: 25px; width: 85%;" onclick="ui.showPage('page-login')">GET STARTED</button>
                 </div>
             </div>
 
             <div id="page-login" class="page">
-                <header><h1>RIHAAL | Ø±Ø­Ø§Ù„</h1></header>
+                <header><h1>RIHAAL | رحال</h1></header>
                 <div class="container" style="padding-top: 20px;">
                     <div id="section-signin">
-                        <div class="auth-header">Login</div>
+                        <div class="auth-header" style="display: inline-block; color: #5D2E0A; font-size: 18px; font-weight: bold; border-bottom: 2px solid #D2B48C; padding-bottom: 5px; margin-bottom: 20px;">Login</div>
                         <input type="text" id="login-user" placeholder="Username">
                         <input type="password" id="login-pass" placeholder="Password">
-                        
-                        <div style="text-align: right; width: 100%; margin-top: 5px; padding-right: 5px; box-sizing: border-box;">
-                            <a href="#" style="font-size: 11px;" onclick="ui.toggleForgot(true)">Forgot Password?</a>
-                        </div>
-                        
                         <button class="btn" onclick="backend.login()">Login</button>
-                        <p style="font-size: 12px; margin-top: 20px; text-align: center;">Don't have an account? <a href="#" onclick="ui.toggleAuth(true)">Sign Up</a></p>
-                    </div>
-                    <div id="section-forgot" style="display:none; text-align: center;">
-                        <div class="auth-header">Reset Password</div>
-                        <input type="email" placeholder="Email Address">
-                        <button class="btn" onclick="ui.notify('Recovery link sent!'); ui.toggleForgot(false)">Send Link</button>
-                        <p style="font-size: 11px; margin-top: 15px;"><a href="#" onclick="ui.toggleForgot(false)">Back to Login</a></p>
+                        <p style="font-size: 12px; margin-top: 20px; text-align: center;">Don't have an account? <a href="#" style="color:#5D2E0A;" onclick="ui.toggleAuth(true)">Sign Up</a></p>
                     </div>
                     <div id="section-signup" style="display:none;">
-                        <div class="auth-header">Sign Up</div>
+                        <div class="auth-header" style="display: inline-block; color: #5D2E0A; font-size: 18px; font-weight: bold; border-bottom: 2px solid #D2B48C; padding-bottom: 5px; margin-bottom: 20px;">Sign Up</div>
                         <input type="text" id="reg-name" placeholder="Full Name">
-                        <input type="email" id="reg-email" placeholder="Email Address">
                         <input type="text" id="reg-user" placeholder="Username">
                         <input type="password" id="reg-pass" placeholder="Password">
                         <select id="reg-role"><option value="passenger">Passenger</option><option value="administrator">Administrator</option></select>
                         <button class="btn" onclick="backend.signup()">Create Account</button>
-                        <p style="font-size: 11px; text-align: center; margin-top:15px;"><a href="#" onclick="ui.toggleAuth(false)">Back to Login</a></p>
+                        <p style="font-size: 11px; text-align: center; margin-top:15px;"><a href="#" style="color:#5D2E0A;" onclick="ui.toggleAuth(false)">Back to Login</a></p>
                     </div>
                 </div>
             </div>
 
             <div id="page-admin-dash" class="page">
-                <header><h1>RIHAAL | Ø±Ø­Ø§Ù„</h1></header>
+                <header><h1>RIHAAL | رحال</h1></header>
                 <div class="container">
                     <h2 class="page-title">Admin Dashboard</h2>
-                    <div class="health-indicator"><span class="dot"></span> System Status: All Engines Operational</div>
+                    <div class="health-indicator"><span class="dot"></span> System Status: Active</div>
                     <div class="dash-grid">
-                        <div class="stat-card"><span>1,284</span><label>Total Users</label></div>
-                        <div class="stat-card"><span>5</span><label>Live Trains</label></div>
-                        <div class="stat-card"><span>342</span><label>New Bookings</label></div>
-                        <div class="stat-card"><span>98%</span><label>Punctuality</label></div>
-                    </div>
-                    <div class="card">
-                        <strong style="font-size: 13px; color: #5D2E0A;">Recent Activity</strong>
-                        <div style="margin-top: 10px;">
-                            <div class="activity-item"><b>Ahmed K.</b> booked Riyadh - Dammam (12 mins ago)</div>
-                            <div class="activity-item"><b>Train #4</b> status changed to <b>Active</b></div>
-                            <div class="activity-item">New Admin <b>Sarah M.</b> registered</div>
-                            <div class="activity-item">System backup completed successfully</div>
-                        </div>
+                        <div class="stat-card"><span id="stat-users">1</span><label>Users</label></div>
+                        <div class="stat-card"><span id="stat-trains">7</span><label>Trains</label></div>
+                        <div class="stat-card"><span id="stat-rev">0</span><label>SAR Revenue</label></div>
+                        <div class="stat-card"><span>100%</span><label>Uptime</label></div>
                     </div>
                 </div>
             </div>
 
             <div id="page-home" class="page">
-                <header><h1>RIHAAL | Ø±Ø­Ø§Ù„</h1></header>
+                <header><h1>RIHAAL | رحال</h1></header>
                 <div class="container">
                     <h2 class="page-title">Welcome to Rihaal</h2>
-                    <p style="font-size: 13px; margin-bottom: 25px;">Hello, <span id="user-display-name">Explorer</span>! Book your journey across the Kingdom.</p>
+                    <p style="font-size: 13px; margin-bottom: 25px;">Hello, <span id="user-display-name">Explorer</span>!</p>
                     <div style="background: #F5DEB3; padding: 40px 20px; border-radius: 15px; text-align: center;">
                         <button class="btn" style="margin-top:0; width:100%; font-size:16px;" onclick="ui.showPage('page-stations')">Find a Train</button>
                     </div>
-                    <div style="margin-top: 40px; text-align: center;">
-                        <button class="btn" style="background:#D2B48C; color:#5D2E0A; width: 100%;" onclick="ui.showPage('page-profile')">View Profile</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="page-profile" class="page">
-                <header><h1>RIHAAL | Ø±Ø­Ø§Ù„</h1></header>
-                <div class="container">
-                    <h2 class="page-title">User Profile</h2>
-                    <div class="card" id="profile-view">
-                        <p><strong>Name:</strong> <span id="p-name-val"></span></p>
-                        <p><strong>Email:</strong> <span id="p-email-val"></span></p>
-                        <button class="btn" style="background:#D2B48C; color:#5D2E0A;" onclick="ui.toggleProfileEdit(true)">Edit Profile</button>
-                    </div>
-                    <div class="card" id="profile-edit" style="display:none;">
-                        <input type="text" id="edit-name-input" placeholder="Update Name">
-                        <input type="email" id="edit-email-input" placeholder="Update Email">
-                        <button class="btn" onclick="backend.updateProfile()">Save Changes</button>
-                        <button class="btn" style="background:#888;" onclick="ui.toggleProfileEdit(false)">Cancel</button>
-                    </div>
-                    <button class="btn" style="background:#D2B48C; color:#5D2E0A;" onclick="ui.showPage('page-home')">Back to Home</button>
                 </div>
             </div>
 
             <div id="page-stations" class="page">
-                <header><h1>RIHAAL | Ø±Ø­Ø§Ù„</h1></header>
+                <header><h1>RIHAAL | رحال</h1></header>
                 <div class="container">
                     <h2 class="page-title">Available Trains</h2>
-                    <input type="text" id="search-input" placeholder="Search routes (e.g. Riyadh)..." onkeyup="ui.filter()">
+                    <input type="text" id="search-input" placeholder="Search routes..." onkeyup="ui.filter()">
                     <div id="train-list-container"></div>
                 </div>
             </div>
 
             <div id="page-booking" class="page">
-                <header><h1>RIHAAL | Ø±Ø­Ø§Ù„</h1></header>
+                <header><h1>RIHAAL | رحال</h1></header>
                 <div class="container">
                     <h2 class="page-title">Select Your Class</h2>
                     <div id="book-route-info" style="font-weight:bold; color:#5D2E0A; margin-bottom:15px;"></div>
-                    <div class="class-box economy-silver" onclick="backend.confirmBooking('Economy', 120)"><span>Economy Class</span><span class="class-price">120 SAR</span></div>
-                    <div class="class-box business-bronze" onclick="backend.confirmBooking('Business', 350)"><span>Business Class</span><span class="class-price">350 SAR</span></div>
+                    <div class="class-box economy-silver" onclick="backend.confirmBooking('Economy', 120)"><span>Economy</span><span class="class-price">120 SAR</span></div>
+                    <div class="class-box business-bronze" onclick="backend.confirmBooking('Business', 350)"><span>Business</span><span class="class-price">350 SAR</span></div>
                     <div class="class-box first-gold" onclick="backend.confirmBooking('First Class', 600)"><span>First Class</span><span class="class-price">600 SAR</span></div>
-                    <button class="btn" style="margin-top:20px;" onclick="ui.showPage('page-stations')">Back</button>
+                    <button class="btn" style="margin-top:20px; background:#888;" onclick="ui.showPage('page-stations')">Back</button>
                 </div>
             </div>
 
             <div id="page-tickets" class="page">
-                <header><h1>RIHAAL | Ø±Ø­Ø§Ù„</h1></header>
+                <header><h1>RIHAAL | رحال</h1></header>
                 <div class="container">
                     <h2 class="page-title">My Tickets</h2>
                     <div id="user-tickets-list"></div>
@@ -248,29 +198,27 @@
             </div>
 
             <div id="page-admin-manage" class="page">
-                <header><h1>RIHAAL | Ø±Ø­Ø§Ù„</h1></header>
+                <header><h1>RIHAAL | رحال</h1></header>
                 <div class="container">
                     <h2 class="page-title">Schedules</h2>
                     <div class="card">
                         <input type="text" id="adm-route" placeholder="Route Name">
-                        <input type="number" id="adm-seats" placeholder="Total Seat Capacity">
-                        <button class="btn" onclick="backend.addTrain()">Update System</button>
+                        <input type="number" id="adm-seats" placeholder="Seats">
+                        <button class="btn" onclick="backend.addTrain()">Add New Train</button>
                     </div>
                     <div id="admin-train-display"></div>
                 </div>
             </div>
 
             <div id="page-admin-reports" class="page">
-                <header><h1>RIHAAL | Ø±Ø­Ø§Ù„</h1></header>
+                <header><h1>RIHAAL | رحال</h1></header>
                 <div class="container">
                     <h2 class="page-title">Revenue Report</h2>
-                    <div class="card" style="background:#F5E1C0; text-align:center;"><small>Total System Revenue</small><h2 style="margin:5px 0;">48,900 SAR</h2></div>
-                    <div class="card" style="font-size:12px;">
-                        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #ddd;"><strong>Economy</strong><span>13,800 SAR</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #ddd;"><strong>Business</strong><span>19,250 SAR</span></div>
-                        <div style="display:flex; justify-content:space-between; padding:8px 0;"><strong>First Class</strong><span>15,850 SAR</span></div>
+                    <div class="card" style="background:#F5E1C0; text-align:center;">
+                        <small>Total System Revenue</small>
+                        <h2 style="margin:5px 0;" id="report-total-rev">0 SAR</h2>
                     </div>
-                    <button class="btn" style="background:#5D2E0A;" onclick="ui.notify('Downloading Revenue Report PDF...')">Download PDF Report</button>
+                    <button class="btn" onclick="ui.notify('Generating PDF...')">Download Report</button>
                 </div>
             </div>
         </div>
@@ -278,34 +226,32 @@
         <div class="menu-bar" id="nav-user" style="display:none;">
             <button onclick="ui.showPage('page-home')">Home</button>
             <button onclick="ui.showPage('page-stations')">Trains</button>
-            <button onclick="ui.showPage('page-tickets')">My Tickets</button>
-            <button onclick="backend.logout()">Logout</button>
+            <button onclick="ui.showPage('page-tickets')">Tickets</button>
+            <button onclick="location.reload()">Logout</button>
         </div>
         <div class="menu-bar" id="nav-admin" style="display:none;">
-            <button onclick="ui.showPage('page-admin-dash')">Dashboard</button>
-            <button onclick="ui.showPage('page-admin-manage')">Schedules</button>
+            <button onclick="ui.showPage('page-admin-dash')">Dash</button>
+            <button onclick="ui.showPage('page-admin-manage')">Manage</button>
             <button onclick="ui.showPage('page-admin-reports')">Revenue</button>
-            <button onclick="backend.logout()">Logout</button>
+            <button onclick="location.reload()">Logout</button>
         </div>
     </div>
 </div>
 
 <script>
     const backend = {
-        users: [{username: 'admin', pass: '1234', role: 'administrator', name: 'System Admin', email: 'admin@rihaal.sa'}],
+        users: [{username: 'admin', pass: '1234', role: 'administrator', name: 'Admin'}],
         currentUser: null,
+        totalRevenue: 0,
         trains: [
-            { id: 1, route: "Riyadh - Dammam", date: "2026-04-20", time: "09:00 AM", seats: 45, status: 'active' },
-            { id: 2, route: "Jeddah - Madinah", date: "2026-04-21", time: "02:30 PM", seats: 12, status: 'active' },
-            { id: 3, route: "Makkah - Jeddah", date: "2026-04-21", time: "11:00 AM", seats: 80, status: 'maintenance' },
-            { id: 4, route: "Riyadh - Qassim", date: "2026-04-22", time: "07:15 AM", seats: 30, status: 'active' },
-            { id: 5, route: "Dammam - Al-Hofuf", date: "2026-04-23", time: "08:45 AM", seats: 55, status: 'active' },
-            { id: 6, route: "Tabuk - Hail", date: "2026-04-24", time: "01:20 PM", seats: 20, status: 'active' },
-            { id: 7, route: "Abha - Riyadh", date: "2026-04-25", time: "10:30 PM", seats: 10, status: 'active' }
+            { id: 1, route: "Riyadh - Dammam", time: "09:00 AM", seats: 45, status: 'active' },
+            { id: 2, route: "Jeddah - Madinah", time: "02:30 PM", seats: 12, status: 'active' },
+            { id: 3, route: "Makkah - Jeddah", time: "11:00 AM", seats: 80, status: 'maintenance' },
+            { id: 4, route: "Riyadh - Qassim", time: "07:15 AM", seats: 30, status: 'active' },
+            { id: 5, route: "Dammam - Al-Hofuf", time: "08:45 AM", seats: 55, status: 'active' }
         ],
         myTickets: [],
         pendingTrain: null,
-        ticketToCancel: null,
 
         login: function() {
             const u = document.getElementById('login-user').value;
@@ -314,73 +260,66 @@
             if(found) {
                 this.currentUser = found;
                 document.getElementById('user-display-name').innerText = found.name;
-                this.syncProfile();
                 document.getElementById(found.role === 'administrator' ? 'nav-admin' : 'nav-user').style.display = 'flex';
                 ui.showPage(found.role === 'administrator' ? 'page-admin-dash' : 'page-home');
                 ui.renderAll();
-                ui.notify("Welcome back, " + found.name);
-            } else { ui.notify("Login Failed: Invalid Credentials"); }
+                ui.notify("Logged in as " + found.role);
+            } else { ui.notify("Invalid Login"); }
         },
+
         signup: function() {
             const u = document.getElementById('reg-user').value;
-            this.users.push({username: u, pass: document.getElementById('reg-pass').value, name: document.getElementById('reg-name').value, email: document.getElementById('reg-email').value, role: document.getElementById('reg-role').value});
-            ui.notify("Account Created Successfully!"); ui.toggleAuth(false);
-        },
-        syncProfile: function() {
-            document.getElementById('p-name-val').innerText = this.currentUser.name;
-            document.getElementById('p-email-val').innerText = this.currentUser.email;
-            document.getElementById('edit-name-input').value = this.currentUser.name;
-            document.getElementById('edit-email-input').value = this.currentUser.email;
-        },
-        updateProfile: function() {
-            this.currentUser.name = document.getElementById('edit-name-input').value;
-            this.currentUser.email = document.getElementById('edit-email-input').value;
-            this.syncProfile(); ui.toggleProfileEdit(false); ui.notify("Profile Updated.");
-        },
-        openBooking: function(id) {
-            this.pendingTrain = this.trains.find(t => t.id === id);
-            document.getElementById('book-route-info').innerText = this.pendingTrain.route + " (" + this.pendingTrain.time + ")";
-            ui.showPage('page-booking');
-        },
-        confirmBooking: function(cls, price) {
-            this.myTickets.push({ticketId: Math.floor(Math.random()*999), route: this.pendingTrain.route, class: cls});
-            ui.notify("Booking Confirmed: " + cls); ui.renderAll(); ui.showPage('page-tickets');
-        },
-        initiateCancel: function(ticketId) {
-            this.ticketToCancel = ticketId;
-            ui.showCancelModal();
-        },
-        executeCancel: function() {
-            this.myTickets = this.myTickets.filter(t => t.ticketId !== this.ticketToCancel);
-            ui.hideCancelModal();
-            ui.notify("Ticket Cancelled Successfully.");
+            this.users.push({username: u, pass: document.getElementById('reg-pass').value, name: document.getElementById('reg-name').value, role: document.getElementById('reg-role').value});
+            ui.notify("Account Created!"); ui.toggleAuth(false);
             ui.renderAll();
         },
+
+        confirmBooking: function(cls, price) {
+            this.myTickets.push({ticketId: Math.floor(Math.random()*999), route: this.pendingTrain.route, class: cls, price: price});
+            this.totalRevenue += price;
+            ui.notify("Booked " + cls + " for " + price + " SAR");
+            ui.renderAll();
+            ui.showPage('page-tickets');
+        },
+
         updateStatus: function(id, status) {
             const t = this.trains.find(x => x.id === id);
-            if(t) { t.status = status; ui.renderAll(); ui.notify("Status updated to " + status); }
+            if(t) { t.status = status; ui.renderAll(); }
         },
+
+        deleteTrain: function(id) {
+            this.trains = this.trains.filter(t => t.id !== id);
+            ui.notify("Train Removed");
+            ui.renderAll();
+        },
+
+        editTrain: function(id) {
+            const t = this.trains.find(x => x.id === id);
+            const newName = prompt("Enter new route name:", t.route);
+            if(newName) {
+                t.route = newName;
+                ui.notify("Route Updated");
+                ui.renderAll();
+            }
+        },
+
         addTrain: function() {
             const r = document.getElementById('adm-route').value;
             const s = document.getElementById('adm-seats').value;
             if(r && s) {
-                this.trains.push({id: Date.now(), route: r, seats: s, status: 'active', date: "TBD", time: "TBD"});
+                this.trains.push({id: Date.now(), route: r, seats: s, status: 'active', time: "12:00 PM"});
                 ui.renderAll();
-                ui.notify("New Schedule Added.");
+                ui.notify("Train Added");
             }
-        },
-        logout: () => location.reload()
+        }
     };
 
     const ui = {
-        notify: function(msg) {
-            const toast = document.getElementById('notification-toast');
-            toast.innerText = msg;
-            toast.classList.add('show');
-            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+        notify: (msg) => {
+            const t = document.getElementById('notification-toast');
+            t.innerText = msg; t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
         },
-        showCancelModal: () => document.getElementById('cancel-overlay').style.display = 'flex',
-        hideCancelModal: () => document.getElementById('cancel-overlay').style.display = 'none',
         showPage: (id) => {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(id).classList.add('active');
@@ -389,49 +328,39 @@
             document.getElementById('section-signin').style.display = is ? 'none' : 'block';
             document.getElementById('section-signup').style.display = is ? 'block' : 'none';
         },
-        toggleForgot: (is) => {
-            document.getElementById('section-signin').style.display = is ? 'none' : 'block';
-            document.getElementById('section-forgot').style.display = is ? 'block' : 'none';
-        },
-        toggleProfileEdit: (is) => {
-            document.getElementById('profile-view').style.display = is ? 'none' : 'block';
-            document.getElementById('profile-edit').style.display = is ? 'block' : 'none';
-        },
         renderAll: function() {
+            // Stats
+            document.getElementById('stat-users').innerText = backend.users.length;
+            document.getElementById('stat-trains').innerText = backend.trains.length;
+            document.getElementById('stat-rev').innerText = backend.totalRevenue;
+            document.getElementById('report-total-rev').innerText = backend.totalRevenue + " SAR";
+
+            // Passenger View
             document.getElementById('train-list-container').innerHTML = backend.trains
                 .filter(t => t.status === 'active')
                 .map(t => `
-                <div class="card" style="padding:15px;">
-                    <div style="display:flex; justify-content:space-between; align-items:start;">
-                        <div><strong style="font-size:15px; color:#5D2E0A;">${t.route}</strong><br><small style="color:#888; font-size:10px;">${t.date} | ${t.time}</small></div>
-                        <button class="btn-action" onclick="backend.openBooking(${t.id})">Book</button>
-                    </div>
+                <div class="card">
+                    <strong>${t.route}</strong><br><small>${t.time}</small>
+                    <button class="btn-action" style="float:right; margin-top:-15px;" onclick="backend.pendingTrain=backend.trains.find(x=>x.id===${t.id}); ui.showPage('page-booking')">Book</button>
                 </div>
             `).join('');
 
+            // Tickets View
             document.getElementById('user-tickets-list').innerHTML = backend.myTickets.map(t => `
-                <div class="card">
-                    <strong>${t.route}</strong><br><small>${t.class} | ID: RIH-${t.ticketId}</small>
-                    <button class="btn-action" style="float:right; margin-top:-10px;" onclick="backend.initiateCancel(${t.ticketId})">Cancel</button>
-                </div>
-            `).join('') || "<p style='text-align:center;'>No tickets.</p>";
+                <div class="card"><strong>${t.route}</strong><br><small>${t.class} - ${t.price} SAR</small></div>
+            `).join('') || "No tickets yet.";
 
+            // Admin Management View
             document.getElementById('admin-train-display').innerHTML = backend.trains.map(t => `
                 <div class="card">
-                    <div style="display:flex; justify-content:space-between; align-items:center;"><strong>${t.route}</strong><small>Seats: ${t.seats}</small></div>
+                    <strong>${t.route}</strong> (Seats: ${t.seats})
                     <div class="admin-status-group">
                         <button class="st-btn ${t.status === 'active' ? 'active-now' : ''}" onclick="backend.updateStatus(${t.id}, 'active')">Active</button>
-                        <button class="st-btn ${t.status === 'maintenance' ? 'active-now' : ''}" onclick="backend.updateStatus(${t.id}, 'maintenance')">Maintenance</button>
-                        <button class="st-btn ${t.status === 'retired' ? 'active-now' : ''}" onclick="backend.updateStatus(${t.id}, 'retired')">Retired</button>
+                        <button class="st-btn" onclick="backend.editTrain(${t.id})">Edit</button>
+                        <button class="st-btn del-btn" onclick="backend.deleteTrain(${t.id})">Delete</button>
                     </div>
                 </div>
             `).join('');
-        },
-        filter: function() {
-            const v = document.getElementById('search-input').value.toLowerCase();
-            document.querySelectorAll('#train-list-container .card').forEach(c => {
-                c.style.display = c.innerText.toLowerCase().includes(v) ? "" : "none";
-            });
         }
     };
 </script>
